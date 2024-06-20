@@ -34,7 +34,14 @@ def get_page_data(page_url: str) -> PageData | None:
             title = soup.find("h1").get_text()
             
             # Get Cost
-            cost = soup.find("span", {"class": "rupee-icon"}).parent.get_text() if soup.find("span", {"class": "rupee-icon"}).parent else None
+            # cost = soup.find("span", {"class": "rupee-icon"}).parent.get_text() if soup.find("span", {"class": "rupee-icon"}).parent else None
+            cost = []
+            if initial_state_json["propertyDetails"]["details"]["details"]["config"]["propertyConfig"]:
+                for item in initial_state_json["propertyDetails"]["details"]["details"]["config"]["propertyConfig"]:
+                    cost.append({
+                        "label": item["label"],
+                        "range": item["range"],
+                    })      
             
             # Get Launch date and BHK units
             launch_date = ''

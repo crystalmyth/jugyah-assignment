@@ -5,7 +5,7 @@ class PageData:
     title: str
     bhk_units: str
     launch_date: str
-    cost: str
+    cost: list
     description: str
     amenities: list
     locality: dict
